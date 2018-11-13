@@ -1,10 +1,11 @@
+package es.ucm.fdi.gdv.nightmareworks.android;
+
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.SurfaceView;
-import android.view.View;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +13,7 @@ import java.io.InputStream;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Graphics;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Image;
 
-public class AndroidGraphics extends SurfaceView implements Graphics {
+public class AndroidGraphics extends SurfaceView implements Graphics{
     public AndroidGraphics(Context context){
         super(context);
         _assetManager = context.getAssets();
