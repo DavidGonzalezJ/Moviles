@@ -13,11 +13,10 @@ import java.io.InputStream;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Graphics;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Image;
 
-public class AndroidGraphics extends SurfaceView implements Graphics{
+public class AndroidGraphics implements Graphics{
     public AndroidGraphics(Context context){
-        super(context);
+        _context = context;
         _assetManager = context.getAssets();
-
     }
 
     @Override
@@ -41,20 +40,21 @@ public class AndroidGraphics extends SurfaceView implements Graphics{
 
     @Override
     public void clear(int color) {
-        Canvas _canvas = getHolder().lockCanvas();
+        Canvas _canvas = _context.getHolder().lockCanvas();
         //ALGO EN TRY CATCH
         _canvas.drawColor(color);
-        getHolder().unlockCanvasAndPost(_canvas);
+        _context.getHolder().unlockCanvasAndPost(_canvas);
     }
 
     @Override
     public void drawImage(Image image, int x, int y) {
-        Canvas _canvas = getHolder().lockCanvas();
+        Canvas _canvas = _context.getHolder().lockCanvas();
         //ALGO EN TRY CATCH
         _canvas.drawBitmap(((AndroidImage) image).getImage(), x, y, null);
-        getHolder().unlockCanvasAndPost(_canvas);
+        _context.getHolder().unlockCanvasAndPost(_canvas);
     }
 
     //GetHeight y GetWidth vienen implementados
     AssetManager _assetManager;
+    Context _context;
 }
