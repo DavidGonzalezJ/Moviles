@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("es.ucm.fdi.gdv.nightmareworks.bombandroid.test", appContext.getPackageName());
+        assertEquals("es.ucm.fdi.gdv.nightmareworks.bombandroid", appContext.getPackageName());
     }
 }

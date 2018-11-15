@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/BombDesktop/BombDesktop.iml" filepath="$PROJECT_DIR$/BombDesktop/BombDesktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Desktop/Desktop.iml" filepath="$PROJECT_DIR$/Desktop/Desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Interface/Interface.iml" filepath="$PROJECT_DIR$/Interface/Interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Logic/Logic.iml" filepath="$PROJECT_DIR$/Logic/Logic.iml" />
       <module fileurl="file://$PROJECT_DIR$/Practica_1_Bombardero.iml" filepath="$PROJECT_DIR$/Practica_1_Bombardero.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/android.iml" filepath="$PROJECT_DIR$/android/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bombandroid/bombandroid.iml" filepath="$PROJECT_DIR$/bombandroid/bombandroid.iml" />
     </modules>
   </component>
 </project>

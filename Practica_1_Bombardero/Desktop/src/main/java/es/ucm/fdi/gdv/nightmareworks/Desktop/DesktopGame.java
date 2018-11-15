@@ -22,6 +22,11 @@ public class DesktopGame implements Game {
         return null;
     }
 
+    @Override
+    public void run() {
+
+    }
+
     DesktopGraphics _graphics;
     DesktopInput _input;
 }

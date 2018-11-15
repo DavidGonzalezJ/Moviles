@@ -2,6 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+
+
+
     defaultConfig {
         applicationId "es.ucm.fdi.gdv.nightmareworks.bombandroid"
         minSdkVersion 15
@@ -12,13 +15,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '28.0.3'
+
 }
 
 dependencies {
@@ -29,6 +33,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':android')
-    implementation project(':Logic')
     implementation project(':Interface')
+    implementation project(':Logic')
 }

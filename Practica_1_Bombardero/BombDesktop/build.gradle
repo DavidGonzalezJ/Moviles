@@ -4,6 +4,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':Desktop')
     implementation project(':Logic')
+    implementation project(':Interface')
 }
 
 sourceCompatibility = "7"

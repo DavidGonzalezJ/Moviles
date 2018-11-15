@@ -1,1 +1,1 @@
-include ':Interface', ':Desktop', ':bombandroid', ':Logic', ':android', ':BombDesktop'
+include ':Interface', ':Desktop', ':bombandroid', ':Logic', ':android', ':BombDesktop', ':bombandroid'
