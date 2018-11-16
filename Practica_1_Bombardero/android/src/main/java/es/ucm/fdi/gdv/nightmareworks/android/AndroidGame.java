@@ -34,8 +34,10 @@ public class AndroidGame implements Game {
     public void run() {
         //Llama al run del estado que tiene en la pila
         //PRUEBA
-        _graphics.clear(3);
-        //_graphics.drawImage(_image, 0,0);
+        ((AndroidGraphics)_graphics).setCanvas();
+        _graphics.clear(2);
+        _graphics.drawImage(_image, 0,0);
+        ((AndroidGraphics)_graphics).releaseCanvas();
     }
 
     Graphics _graphics;

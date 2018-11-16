@@ -17,7 +17,7 @@ public class BombAndroid extends AppCompatActivity {
         _game = new AndroidGame();
         _gameThread = new gameThread(this);
         _game.init(this, _gameThread);
-        _gameThread.init(_game);
+       // _gameThread.init(_game);
         setContentView(_gameThread);
     }
 
@@ -38,9 +38,9 @@ public class BombAndroid extends AppCompatActivity {
             super(context);
         }
 
-        public void init(AndroidGame game){
-            _game = game;
-        }
+        //public void init(AndroidGame game){
+         //   _game = game;
+        //}
 
         public void resume(){
             if(!_running){
@@ -74,7 +74,6 @@ public class BombAndroid extends AppCompatActivity {
                _game.run();
             }
         }
-        AndroidGame _game;
         volatile boolean _running = false;
         Thread _runningThread;
     }//Fin clase GameThread

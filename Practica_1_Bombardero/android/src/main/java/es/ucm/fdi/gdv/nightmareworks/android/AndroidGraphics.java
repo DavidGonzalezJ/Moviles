@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import java.io.IOException;
@@ -40,17 +41,28 @@ public class AndroidGraphics implements Graphics{
 
     @Override
     public void clear(int color) {
-        Canvas _canvas = _surface.getHolder().lockCanvas();
         //ALGO EN TRY CATCH
-        _canvas.drawColor(color);
-        _surface.getHolder().unlockCanvasAndPost(_canvas);
+        _canvas.drawColor(0xFF0000FF);
     }
 
     @Override
     public void drawImage(Image image, int x, int y) {
-        Canvas _canvas = _surface.getHolder().lockCanvas();
         //ALGO EN TRY CATCH
-        _canvas.drawBitmap(((AndroidImage) image).getImage(), x, y, null);
+        Bitmap sprite = ((AndroidImage)image).getImage();
+        if(sprite != null) {
+            _canvas.drawBitmap(((AndroidImage) image).getImage(), x, y, null);
+        }
+    }
+
+    //Este metodo se llama antes de dibujar la escena
+    public void setCanvas(){
+        while (!_surface.getHolder().getSurface().isValid())
+            ;
+        _canvas = _surface.getHolder().lockCanvas();
+    }
+
+    //Este método se llama después de dibujar la escena
+    public void releaseCanvas(){
         _surface.getHolder().unlockCanvasAndPost(_canvas);
     }
 
@@ -64,6 +76,7 @@ public class AndroidGraphics implements Graphics{
         return _surface.getHeight();
     }
 
+    Canvas _canvas;
     AssetManager _assetManager;
     SurfaceView _surface;
 }
