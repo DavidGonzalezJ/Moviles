@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -46,11 +47,13 @@ public class AndroidGraphics implements Graphics{
     }
 
     @Override
-    public void drawImage(Image image, int x, int y) {
+    public void drawImage(Image image, int posX, int posY, int widthP, int heightP, int Ix, int Iy, int Iheight, int Iwidth) {
         //ALGO EN TRY CATCH
         Bitmap sprite = ((AndroidImage)image).getImage();
+        Rect src = new Rect(Ix,Iy,Iwidth,Iheight);
+        Rect dst = new Rect(posX, posY,widthP,heightP);
         if(sprite != null) {
-            _canvas.drawBitmap(((AndroidImage) image).getImage(), x, y, null);
+            _canvas.drawBitmap(((AndroidImage) image).getImage(),src,dst,null);
         }
     }
 

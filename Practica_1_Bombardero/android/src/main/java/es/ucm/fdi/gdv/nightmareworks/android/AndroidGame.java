@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.SurfaceView;
 
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Game;
+import es.ucm.fdi.gdv.nightmareworks.aninterface.GameState;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Graphics;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Image;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Input;
@@ -17,6 +18,7 @@ public class AndroidGame implements Game {
     public void init(Context context,SurfaceView surface){
         _graphics = new AndroidGraphics(context.getAssets(), surface);
         _input = new AndroidInput(context);
+        //Prueba
         _image = _graphics.newImage("AlaiaFace.png");
     }
 
@@ -31,12 +33,34 @@ public class AndroidGame implements Game {
     }
 
     @Override
+    public void addState(GameState state) {
+        _states.push(state);
+    }
+
+    @Override
+    public void popState() {
+        _states.pop();
+    }
+
+    @Override
+    public void addImage(Image img) {
+        _images.add(img);
+    }
+
+    @Override
+    public Image getImage(int at) {
+        return _images.elementAt(at);
+    }
+
+    @Override
     public void run() {
         //Llama al run del estado que tiene en la pila
+        //_states.peek().Tick();
+        //_states.peek().Render();
+
         //PRUEBA
         ((AndroidGraphics)_graphics).setCanvas();
         _graphics.clear(2);
-        _graphics.drawImage(_image, 0,0);
         ((AndroidGraphics)_graphics).releaseCanvas();
     }
 
