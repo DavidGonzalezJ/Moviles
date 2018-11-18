@@ -2,6 +2,7 @@ package es.ucm.fdi.gdv.nightmareworks.Desktop;
 
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Game;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Graphics;
+import es.ucm.fdi.gdv.nightmareworks.aninterface.Image;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Input;
 
 public class DesktopGame implements Game {
@@ -19,6 +20,16 @@ public class DesktopGame implements Game {
 
     @Override
     public Input getInput() {
+        return null;
+    }
+
+    @Override
+    public void addImage(Image img) {
+
+    }
+
+    @Override
+    public Image getImage(int at) {
         return null;
     }
 

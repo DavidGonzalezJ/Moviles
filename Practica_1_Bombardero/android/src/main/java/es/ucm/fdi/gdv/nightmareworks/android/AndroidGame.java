@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.SurfaceView;
 
+import es.ucm.fdi.gdv.nightmareworks.Logic.Logic;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Game;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.GameState;
 import es.ucm.fdi.gdv.nightmareworks.aninterface.Graphics;
@@ -33,16 +34,6 @@ public class AndroidGame implements Game {
     }
 
     @Override
-    public void addState(GameState state) {
-        _states.push(state);
-    }
-
-    @Override
-    public void popState() {
-        _states.pop();
-    }
-
-    @Override
     public void addImage(Image img) {
         _images.add(img);
     }
@@ -57,7 +48,7 @@ public class AndroidGame implements Game {
         //Llama al run del estado que tiene en la pila
         //_states.peek().Tick();
         //_states.peek().Render();
-
+        _logica.run();
         //PRUEBA
         ((AndroidGraphics)_graphics).setCanvas();
         _graphics.clear(2);
@@ -67,4 +58,5 @@ public class AndroidGame implements Game {
     Graphics _graphics;
     Input _input;
     Image _image;
+    Logic _logica;
 }

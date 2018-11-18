@@ -1,25 +1,31 @@
 package es.ucm.fdi.gdv.nightmareworks.bombandroid;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.SurfaceView;
-import android.graphics.Canvas;
+import android.view.Window;
+import android.view.WindowManager;
 
 import es.ucm.fdi.gdv.nightmareworks.android.AndroidGame;
-import es.ucm.fdi.gdv.nightmareworks.android.AndroidGraphics;
 
-public class BombAndroid extends AppCompatActivity {
+public class BombAndroid extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Pantalla completa
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //Se inicializa el hilo del juego
         _game = new AndroidGame();
         _gameThread = new gameThread(this);
         _game.init(this, _gameThread);
-       // _gameThread.init(_game);
         setContentView(_gameThread);
-    }
+
+    }//OnCreate
 
     @Override
     protected void onResume(){
@@ -32,27 +38,23 @@ public class BombAndroid extends AppCompatActivity {
         super.onPause();
         _gameThread.pause();
     }
+
     //CLASE GAME THREAD
     public class gameThread extends SurfaceView implements Runnable{
         public gameThread(Context context){
             super(context);
         }
 
-        //public void init(AndroidGame game){
-         //   _game = game;
-        //}
-
+        //Inicializa el hilo
         public void resume(){
             if(!_running){
                 _running = true;
-                // Si llamamos al run() no tenemos separado de la hebra de UI.
-                // Para crear una hebra necesitamos una clase que herede de Runnable
                 _runningThread = new Thread(this);
-                _runningThread.start(); //Este método hará sus cosas y vuelve, en paralelo se ejecutará el run.
-
+                _runningThread.start();
             }//if !running
         } //resume
 
+        //Cierra el hilo
         public void pause(){
             _running = false;
             while (true) {
@@ -63,8 +65,6 @@ public class BombAndroid extends AppCompatActivity {
 
                 }//Catch
             }//While
-
-            //El pause y el run estan en hebras diferentes
         }//Pause
 
         @Override
