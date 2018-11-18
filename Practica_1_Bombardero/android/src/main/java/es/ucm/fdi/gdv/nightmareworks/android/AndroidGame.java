@@ -18,9 +18,7 @@ public class AndroidGame implements Game {
 
     public void init(Context context,SurfaceView surface){
         _graphics = new AndroidGraphics(context.getAssets(), surface);
-        _input = new AndroidInput(context);
-        //Prueba
-        _image = _graphics.newImage("AlaiaFace.png");
+        _input = new AndroidInput();
     }
 
     @Override
@@ -45,18 +43,10 @@ public class AndroidGame implements Game {
 
     @Override
     public void run() {
-        //Llama al run del estado que tiene en la pila
-        //_states.peek().Tick();
-        //_states.peek().Render();
         _logica.run();
-        //PRUEBA
-        ((AndroidGraphics)_graphics).setCanvas();
-        _graphics.clear(2);
-        ((AndroidGraphics)_graphics).releaseCanvas();
     }
 
-    Graphics _graphics;
-    Input _input;
-    Image _image;
-    Logic _logica;
+    protected Graphics _graphics;
+    protected Input _input;
+    protected Logic _logica;
 }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -23,6 +24,10 @@ public class BombAndroid extends Activity {
         _game = new AndroidGame();
         _gameThread = new gameThread(this);
         _game.init(this, _gameThread);
+
+        //Suscribe el input al Surfaceview
+        _gameThread.setOnTouchListener((View.OnTouchListener) _game.getInput());
+
         setContentView(_gameThread);
 
     }//OnCreate
